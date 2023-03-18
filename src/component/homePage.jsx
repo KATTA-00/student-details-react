@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import DetailCard from "./detailCard";
-import Details from "../data/details";
+import Details, { getDetails } from "../data/details";
 
 function HomePage() {
+  const [details, setDetails] = useState(getDetails());
+
   return (
     <section className="home-page">
       <div className="home-page-title">
         <h3 style={{ textAlign: "center" }}>Student Details System</h3>
       </div>
       <div className="card-container">
-        {Details.map((student) => {
+        {details.map((student) => {
           return (
             <DetailCard
               firstname={student.firstname}
               lastname={student.lastname}
               Eno={student.Eno}
               email={student.email}
+              key={student.id}
             />
           );
         })}
