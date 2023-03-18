@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../App.css";
 import Input from "./input";
 import Details from "../data/details";
+import axios from "axios";
+const endPointReg = "http://localhost:5000/register";
 
 function RegisterForm() {
   const [formData, setformData] = useState({
@@ -17,12 +19,21 @@ function RegisterForm() {
     setformData(tempformData);
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
 
-    const tempdata = { ...formData };
-    tempdata.id = Details[Details.length - 1].id + 1;
-    Details.push(tempdata);
+    // const tempdata = { ...formData };
+    // tempdata.id = Details[Details.length - 1].id + 1;
+    // Details.push(tempdata);
+
+    await axios
+      .post(endPointReg, formData)
+      .then((res) => {
+        window.location = "/";
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
 
     setformData({
       firstname: "",
