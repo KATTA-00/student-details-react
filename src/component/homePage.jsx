@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import DetailCard from "./detailCard";
-import Details, { getDetails } from "../data/details";
-import axios from "axios";
-
-const endPointReg = "http://localhost:5000/register";
+import DetailCard from "./common/detailCard";
+import { getStudents } from "../services/studentService";
 
 function HomePage() {
   const [details, setDetails] = useState([]);
 
   async function getData() {
-    await axios
-      .get(endPointReg)
-      .then((res) => {
-        setDetails(res.data);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    const data = await getStudents();
+    setDetails(data);
   }
 
   useEffect(() => {
@@ -37,7 +28,7 @@ function HomePage() {
               lastname={student.lastname}
               Eno={student.Eno}
               email={student.email}
-              key={student.id}
+              key={student._id}
             />
           );
         })}

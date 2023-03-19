@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
-import Input from "./input";
+import Input from "./common/input";
 
 function Log() {
   const [logData, setlogData] = useState({

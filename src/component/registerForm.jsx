@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../App.css";
-import Input from "./input";
-import Details from "../data/details";
+import Input from "./common/input";
 import axios from "axios";
+import { regStudent } from "../services/studentService";
+
 const endPointReg = "http://localhost:5000/register";
 
 function RegisterForm() {
@@ -22,18 +23,7 @@ function RegisterForm() {
   async function onSubmit(e) {
     e.preventDefault();
 
-    // const tempdata = { ...formData };
-    // tempdata.id = Details[Details.length - 1].id + 1;
-    // Details.push(tempdata);
-
-    await axios
-      .post(endPointReg, formData)
-      .then((res) => {
-        window.location = "/";
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    await regStudent(formData);
 
     setformData({
       firstname: "",
