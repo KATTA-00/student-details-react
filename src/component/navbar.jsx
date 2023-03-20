@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ user }) {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -10,20 +10,49 @@ function NavBar() {
         </Link>
         <div className="navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link
-                className="nav-link active"
-                aria-current="page"
-                to="/register"
-              >
-                Register
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/log">
-                Log
-              </Link>
-            </li>
+            {!user && (
+              <>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/register"
+                  >
+                    Register
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/log"
+                  >
+                    Log
+                  </Link>
+                </li>
+              </>
+            )}
+            {user && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/">
+                    {user}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/"
+                    onClick={(e) => {
+                      localStorage.removeItem("token");
+                    }}
+                  >
+                    Logout
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
