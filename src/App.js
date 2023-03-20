@@ -12,7 +12,7 @@ function App() {
 
   return (
     <React.Fragment>
-      {/* <NavBar user={user} /> */}
+      <NavBar user={user} />
       <main className="container">
         <Routes>
           <Route
