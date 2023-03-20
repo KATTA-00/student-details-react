@@ -15,7 +15,7 @@ function HomePage({ user, setUser }) {
   useEffect(() => {
     getData();
     setUser(getCurrentUser());
-  }, []);
+  });
 
   return (
     <section className="home-page">
