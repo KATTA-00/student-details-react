@@ -8,9 +8,9 @@ import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
 if (process.env.NODE_ENV === "production") disableReactDevTools();
 
-window.onbeforeunload = function () {
-  localStorage.clear();
-};
+// window.onbeforeunload = function () {
+//   localStorage.clear();
+// };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
