@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const endPointStudent = "http://localhost:5000/students";
-const endPointReg = "http://localhost:5000/register";
-const endPointLog = "http://localhost:5000/log";
+const endPointStudent = "https://kattadetailsbackend.onrender.com/students";
+const endPointReg = "https://kattadetailsbackend.onrender.com/register";
+const endPointLog = "https://kattadetailsbackend.onrender.com/log";
 
 async function getStudents() {
   let data = [];
